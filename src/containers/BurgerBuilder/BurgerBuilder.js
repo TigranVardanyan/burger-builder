@@ -20,11 +20,9 @@ class BurgerBuilder extends Component {
     },
     totalPrice: 4
   }
-
   addIngredientHandler = (type) => {
     const oldCount = this.state.ingredients[type];
     const updatedCounted = oldCount + 1;
-    console.log('ingredients',this.state.ingredients)
     const updatedIngredients = {
       ...this.state.ingredients
     };
@@ -32,10 +30,12 @@ class BurgerBuilder extends Component {
     const priceAddition = INGREDIENT_PRICES[type];
     const oldPrice = this.state.totalPrice;
     const newPrice = oldPrice + priceAddition;
-    this.setState({ingredients:updatedIngredients,totalPrice:newPrice})
-    console.log(newPrice)
+    this.setState({
+        totalPrice: newPrice,
+        ingredients: updatedIngredients,
+      }
+    )
   }
-
   removeIngredientHandler = (type) => {
     const oldCount = this.state.ingredients[type];
   }
@@ -45,7 +45,7 @@ class BurgerBuilder extends Component {
       <Aux>
         <Burger ingredients={this.state.ingredients}/>
         <BuildControls
-        ingredientAdded={this.addIngredientHandler}/>
+          ingredientAdded={this.addIngredientHandler}/>
       </Aux>
     )
   }
