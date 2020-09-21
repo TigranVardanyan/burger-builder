@@ -6,9 +6,9 @@ import NavigationItems from "./../../Navgiation/NavigationItems/NavigationItems"
 
 
 
-const toolbar = (props) => (
+const toolbar = () => (
   <header className={classes.Toolbar}>
-    <div onClick={props.toggle}>MENU</div>
+    <div>MENU</div>
     <div className={classes.Logo}>
       <Logo/>
     </div>
