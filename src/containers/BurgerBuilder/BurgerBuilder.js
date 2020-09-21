@@ -5,7 +5,7 @@ import Modal from './../../components/UI/Modal/Modal';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 
 
-import Aux from '../../hoc/Auxiliary'
+import Aux from './../../hoc/Auxiliary/Auxiliary'
 
 const INGREDIENT_PRICES = {
   salad: 0.5,
