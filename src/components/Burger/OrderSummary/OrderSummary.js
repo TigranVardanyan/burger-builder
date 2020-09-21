@@ -5,9 +5,9 @@ import Aux from '../../../hoc/Auxiliary'
 class OrderSummary extends Component {
   //this could be a functional component, doesn't have to be a class
   //we change to see when call componentWillUpdate
-  componentWillUpdate(nextProps, nextState, nextContext) {
-    console.log('[OrderSummary] componentWillUpdate')
-  }
+  //componentWillUpdate(nextProps, nextState, nextContext) {
+  //  console.log('[OrderSummary] componentWillUpdate')
+  //}
 
   render() {
     const ingredientSummary =
