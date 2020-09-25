@@ -7,13 +7,72 @@ import classes from './ContactData.css';
 
 class ContactData extends Component {
   state = {
-    name: '',
-    email: '',
-    address: {
-      city: '',
-      country: '',
-      street: '',
-      zipCode: '',
+    orderForm: {
+      //todo generate this objects with helper function
+      name: {
+        elementType: 'input',
+        elementConfig: {
+          type: 'text',
+          placeholder: 'Your Name'
+        },
+        value: '',
+      },
+      email: {
+        elementType: 'input',
+        elementConfig: {
+          type: 'email',
+          placeholder: 'Your Email'
+        },
+        value: '',
+      },
+      country: {
+        elementType: 'input',
+        elementConfig: {
+          type: 'text',
+          placeholder: 'Country'
+        },
+        value: '',
+      },
+      city: {
+        elementType: 'input',
+        elementConfig: {
+          type: 'text',
+          placeholder: 'City'
+        },
+        value: '',
+      },
+      street: {
+        elementType: 'input',
+        elementConfig: {
+          type: 'text',
+          placeholder: 'Street'
+        },
+        value: '',
+      },
+      zipCode: {
+        elementType: 'input',
+        elementConfig: {
+          type: 'text',
+          placeholder: 'ZIP Code'
+        },
+        value: '',
+      },
+      deliveryMethod: {
+        elementType: 'select',
+        elementConfig: {
+          options: [
+            {
+              value: 'fastest',
+              displayValue: 'Fastest'
+            },
+            {
+              value: 'cheapest',
+              displayValue: 'Cheapest'
+            }
+          ]
+        },
+        value: '',
+      },
     },
     loading: false,
   }
@@ -25,17 +84,6 @@ class ContactData extends Component {
     const order = {
       ingredients: this.props.ingredients,
       price: this.props.price,
-      customer: {
-        name: "Tigran",
-        address: {
-          street: 'M. Mashtoc',
-          zipCode: 12345,
-          city: 'Yerevan',
-          country: 'Armenia'
-        },
-        email: 'tig.vardanyan.001@gmail.com'
-      },
-      deliveryMethod: 'fastest',
     }
     axios.post('/orders.json', order)
          .then(response => {
@@ -54,6 +102,11 @@ class ContactData extends Component {
     console.log(this.props)
     let form = (
       <form>
+        <Input
+          elementType={'...'}
+          elementConfig={'...'}
+          value={'...'}
+        />
         <Input inputtype={'input'} type="text" name={'name'} placeholder={'Your Name'}/>
         <Input inputtype={'input'} type="email" name={'email'} placeholder={'Your Email'}/>
         <Input inputtype={'input'} type="text" name={'city'} placeholder={'Your City'}/>
