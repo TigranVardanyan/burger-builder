@@ -10,6 +10,7 @@ class Modal extends Component {
   }
   componentWillUpdate(nextProps, nextState, nextContext) {
     console.log('[Modal] componentWillUpdate')
+    //todo this component should be not update when not shown
   }
 
   render() {
