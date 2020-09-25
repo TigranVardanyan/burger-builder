@@ -132,17 +132,17 @@ class ContactData extends Component {
          })
   }
   checkValidity = (value, rules) => {
-    let isValid = false;
+    let isValid = true;
 
-    if (rules.required) {
+    if (rules.required && isValid) {
       isValid = value.trim() !== ''
     }
 
-    if (rules.minLength) {
+    if (rules.minLength && isValid) {
       isValid = value.length >= rules.minLength
     }
 
-    if (rules.maxLength) {
+    if (rules.maxLength && isValid) {
       isValid = value.length <= rules.maxLength
     }
 
@@ -155,12 +155,13 @@ class ContactData extends Component {
     const updatedFormElement = {
       ...updatedOrderForm[inputIdentifier]
     }
-    updatedFormElement.value = event.target.value;
+    updatedFormElement.value = event.target.value;//.trim();
+    // todo trim before send to server and before check avlidation, but save chance to write like "Anna Maria"
     updatedFormElement.valid =
       this.checkValidity(updatedFormElement.value,
         updatedFormElement.validation);
     updatedOrderForm[inputIdentifier] = updatedFormElement;
-    //console.log(updatedFormElement.valid); //check valid or not
+    console.log(updatedFormElement.valid); //check valid or not
     this.setState({orderForm: updatedOrderForm})
   }
 
