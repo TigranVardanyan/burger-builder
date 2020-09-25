@@ -104,6 +104,7 @@ class ContactData extends Component {
           ],
         },
         value: 'fastest',//todo my way,think how can optimize
+        valid: true,
         //validation: {
         //  required: true,
         //},
@@ -111,6 +112,7 @@ class ContactData extends Component {
         //touched: false,
       },
     },
+    formIsValid: false,
     loading: false,
   }
   orderHandler = (event) => {
@@ -138,21 +140,17 @@ class ContactData extends Component {
            this.setState({loading: false})
          })
   }
-  checkValidity = (value, rules) => {
+  checkValidity = (value, rules) => { //todo validation work no properly
     let isValid = true;
-
     if (rules.required && isValid) {
       isValid = value.trim() !== ''
     }
-
     if (rules.minLength && isValid) {
       isValid = value.length >= rules.minLength
     }
-
     if (rules.maxLength && isValid) {
       isValid = value.length <= rules.maxLength
     }
-
     return isValid;
   }
   inputChangedHandler = (event, inputIdentifier) => {
@@ -169,8 +167,18 @@ class ContactData extends Component {
         updatedFormElement.validation);
     updatedFormElement.touched = true;
     updatedOrderForm[inputIdentifier] = updatedFormElement;
-    console.log(updatedFormElement.valid); //check valid or not
-    this.setState({orderForm: updatedOrderForm})
+    //console.log(updatedFormElement.valid); //check valid or not
+    let formIsValid = true;
+    for (let inputIdentifiers in updatedOrderForm) {
+      formIsValid = updatedOrderForm[inputIdentifier].valid && formIsValid
+    }
+    console.log('formIsValid',formIsValid);
+    this.setState(
+      {
+        orderForm: updatedOrderForm,
+        formIsValid: formIsValid
+      }
+    )
   }
 
   render() {
@@ -199,6 +207,7 @@ class ContactData extends Component {
         ))}
         <Button
           btnType={'Success'}
+          disabled={!this.state.formIsValid}
         >
           Order
         </Button>
