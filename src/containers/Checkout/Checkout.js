@@ -7,7 +7,6 @@ class Checkout extends Component {
   state = {
     ingredients: null,
     price: 0,
-
   }
 
   componentWillMount() {
@@ -18,14 +17,17 @@ class Checkout extends Component {
     let price = 0;
     for (let param of query.entries()) {
       //console.log(query.entries())
+      //console.log(param)
       if (param[0] === 'price') {
-        price = +param[1]
-      } else {
+        price = +param[1];
+      }
+      else {
         ingredients[param[0]] = +param[1]
       }
     }
     this.setState({
-      ingredients: ingredients
+      ingredients: ingredients,
+      price: price,
     })
   }
 
@@ -41,6 +43,7 @@ class Checkout extends Component {
       <div>
         <CheckoutSummary
           ingredients={this.state.ingredients}
+          price={this.state.price}
           checkoutCancelled={this.checkoutCancelledHandler}
           checkoutContinued={this.checkoutContinuedHandler}
         />
@@ -50,7 +53,7 @@ class Checkout extends Component {
           render={(props) => (<ContactData
             {...props}
             ingredients={this.state.ingredients}
-            price = {this.state.totalPrice}
+            price={this.state.price}
           />)}
         />;
       </div>

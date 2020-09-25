@@ -20,6 +20,7 @@ class ContactData extends Component {
     event.preventDefault();
     //console.log("this.props.ingredients", this.props.ingredients)
     this.setState({loading: true});
+    console.log("this.props.price", this.props.price)
     const order = {
       ingredients: this.props.ingredients,
       price: this.props.price,
@@ -48,6 +49,8 @@ class ContactData extends Component {
   }
 
   render() {
+    console.log('[ContactData] props')
+    console.log(this.props)
     let form = (
       <form>
         <input className={classes.Input} type="text" name={'name'} placeholder={'Your Name'}/>
