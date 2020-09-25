@@ -14,7 +14,7 @@ const sideDrawer = (props) => {
   return(
 
     <Aux>
-      //todo backdrop auto-hide not work after NavLinks
+      {/*todo backdrop auto-hide not work after NavLinks*/}
       <Backdrop show={props.open} clicked={props.closed}/>
       <div className={attachedClasses.join(' ')}>
         <div className={classes.Logo}>
