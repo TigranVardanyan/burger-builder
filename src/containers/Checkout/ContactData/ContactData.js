@@ -104,6 +104,7 @@ class ContactData extends Component {
           ],
         },
         value: 'fastest',//todo my way,think how can optimize
+        validation: {},
         valid: true,
         //validation: {
         //  required: true,
@@ -140,7 +141,7 @@ class ContactData extends Component {
            this.setState({loading: false})
          })
   }
-  checkValidity = (value, rules) => { //todo validation work no properly
+  checkValidity = (value, rules) => {
     let isValid = true;
     if (rules.required && isValid) {
       isValid = value.trim() !== ''
@@ -170,7 +171,7 @@ class ContactData extends Component {
     //console.log(updatedFormElement.valid); //check valid or not
     let formIsValid = true;
     for (let inputIdentifiers in updatedOrderForm) {
-      formIsValid = updatedOrderForm[inputIdentifier].valid && formIsValid
+      formIsValid = updatedOrderForm[inputIdentifiers].valid && formIsValid
     }
     console.log('formIsValid',formIsValid);
     this.setState(
